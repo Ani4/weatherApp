@@ -36,8 +36,8 @@ app.post('/',function (req,res) {
     });
 })
 
-app.listen(3000,function(req,res){
-    console.log("SERVER IS ON");
-    console.log("============++++++++++++++");
-    
+app.set('port', process.env.PORT || 3000);
+app.set('ip', process.env.IP || "0.0.0.0");
+app.listen(app.get('port'), app.get('ip'), function () {
+    console.log('Weather App is started http://' + app.get('ip') + ":" + app.get('port'));
 });
