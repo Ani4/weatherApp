@@ -1,0 +1,26 @@
+*{
+    padding:0;
+    margin:0;
+    box-sizing: border-box;
+    color:white;
+}
+
+body{
+    position: relative;
+    height: 100vh;
+    background-image: linear-gradient(to right bottom,green,white);
+}
+
+.jumbotron{
+    position: absolute;
+    top: 10%;
+    right: 50%;
+    text-align: center;
+}
+.container
+{
+     position: absolute;
+    top: 30%;
+    right: 50%;
+    text-align: left;
+}

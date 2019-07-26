@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Weather App</title>
+   <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="style.css">
+
+    <script >function localTime() {
+            var time, local;
+            setInterval(() => {
+                time = new Date();
+                local = time.toLocaleTimeString();
+                document.getElementById('time').innerHTML = local;
+            }, 500)
+        }</script>
+    
+</head>
+<body onload="localTime()">
+    
+    <h1  class="jumbotron " >Weather App</h1>
+    <h6 id="time"></h6>
+    
+    <div class="container container-fluid">
+        <form action="/" method="post">
+            <div class="cityInput"><input type="text" name="city" id="city" placeholder="Enter your city..."></div>
+            <p>
+
+            </p>
+            <input type="submit" class="btn btn-primary">
+        </form>
+            <% if(weather!==null){ %>
+            <p > It's <%=weather.main.temp %> &degC in <%=weather.name%></p>
+            <% } %>
+            
+            <% if(error !== null){ %>
+            <p><%= error %></p>
+            <% } %>
+    </div>
+    
+</body>
+</html>
+
+
