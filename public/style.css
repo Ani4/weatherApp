@@ -2,25 +2,67 @@
     padding:0;
     margin:0;
     box-sizing: border-box;
-    color:white;
 }
-
 body{
-    position: relative;
-    height: 100vh;
-    background-image: linear-gradient(to right bottom,green,white);
+background-image:linear-gradient(141deg, #9fb8ad 0%, #1fc8db 51%, #2cb5e8 75%);
+background-repeat: no-repeat;
+position: relative;
+}
+body div{
+    box-sizing: border-box;
 }
 
-.jumbotron{
+.grid-container{
+    display: grid;
+    grid-template-columns: 2fr 4fr 2fr;
+    grid-template-rows: 2fr 4fr 2fr;
+    grid-template-areas: 
+        'blank1 header blank2'
+        'blank3 input  blank4'
+        'blank5 output blank6';
+}
+.heading{
+    padding-top: 1em;
+    grid-column: 2/3;
+    text-align: center;
+    text-justify: auto;
+}
+#time{
+    grid-area: blank2;
+    padding-top:2em;
+    padding-left: 20%;
+}
+#date{
+    grid-area: blank2;
+    padding-top:3em;
+    padding-left: 20%;
+   
+}
+.grid1{
+   grid-area: input; 
+   position: relative;
+}
+.cityInput{
+
+    padding-top: 1em;
     position: absolute;
-    top: 10%;
-    right: 50%;
+    top:20%;
+    right:35%;
     text-align: center;
 }
-.container
-{
-     position: absolute;
-    top: 30%;
+.btn{
+    position: absolute;
+    display: inline-block;
+    top: 50%;
     right: 50%;
-    text-align: left;
+}
+.output{
+    grid-area:output;
+    position: relative;
+}
+#output{
+    position: absolute;
+    top: 50%;
+    right:50%;
+
 }

@@ -5,41 +5,52 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Weather App</title>
-   <!--  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
     <link rel="stylesheet" href="style.css">
-
-    <script >function localTime() {
+    
+    <script> 
+       function localTime() {
             var time, local;
             setInterval(() => {
-                time = new Date();
-                local = time.toLocaleTimeString();
-                document.getElementById('time').innerHTML = local;
+            time = new Date();
+            local = time.toLocaleTimeString();
+            date = time.toLocaleDateString();
+            document.getElementById('time').innerHTML = local;
+            document.getElementById('date').innerHTML = date;
             }, 500)
-        }</script>
+        }
+    </script>
+    </head>
+
     
 </head>
 <body onload="localTime()">
-    
-    <h1  class="jumbotron " >Weather App</h1>
-    <h6 id="time"></h6>
-    
-    <div class="container container-fluid">
-        <form action="/" method="post">
-            <div class="cityInput"><input type="text" name="city" id="city" placeholder="Enter your city..."></div>
-            <p>
-
-            </p>
-            <input type="submit" class="btn btn-primary">
-        </form>
+    <div>
+    <div class="grid-container">
+        <h1  class="heading " >Weather App</h1>
+        <h5 id="time"></h4>
+        <h5 id="date"></h4>
+        
+        <div class="grid1" >
+            <form action="/" method="post">
+                <div class="cityInput input-group-prepend">
+                    <input type="text" name="city" class="form-control" placeholder="Enter your city...">
+                </div>
+                <input type="submit" class="btn btn-info">
+            </form>
+               
+        </div>
+        <div class="output">
             <% if(weather!==null){ %>
-            <p > It's <%=weather.main.temp %> &degC in <%=weather.name%></p>
+            <p id='output'> It's <span><%=weather.main.temp %></span> &degC in <%=weather.name%></p>
             <% } %>
             
             <% if(error !== null){ %>
             <p><%= error %></p>
             <% } %>
+        </div>
     </div>
-    
+</div>
 </body>
 </html>
 
