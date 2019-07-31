@@ -20,6 +20,7 @@ body div{
         'blank1 header blank2'
         'blank3 input  blank4'
         'blank5 output blank6';
+    height: 100%;
 }
 .heading{
     padding-top: 1em;
@@ -59,10 +60,12 @@ body div{
 .output{
     grid-area:output;
     position: relative;
+    max-height: 100%;
 }
 #output{
     position: absolute;
     top: 50%;
     right:50%;
+    color:linear-gradient(1deg, #37ee12 0%, #e74e07 51%, #2cb5e8 75%);
 
 }

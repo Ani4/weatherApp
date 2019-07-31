@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
     <title>Weather App</title>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="style.css"/>
     
     <script> 
        function localTime() {
@@ -19,13 +19,44 @@
             document.getElementById('date').innerHTML = date;
             }, 500)
         }
+      
+
+        function getLocation() {
+            
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition);
+            } else {
+                x.innerHTML = "Geolocation is not supported by this browser.";
+            }
+            }
+
+        function showPosition(position) {
+            var x = document.getElementById("location");
+            console.log(position);
+            x.innerHTML = "Latitude: " + position.coords.latitude +
+            "<br/>Longitude: " + position.coords.longitude;
+             const data ={
+                 lat:position.coords.latitude, 
+                lon: position.coords.longitude
+             };
+             const options ={
+                method :"POST",
+                body:JSON.stringify(data),
+                headers:{
+                    'Content-Type':"application/json"
+                } 
+             }  ; 
+             fetch('/',options); 
+        }
+
+      
     </script>
     </head>
 
     
 </head>
-<body onload="localTime()">
-    <div>
+<body onload="{localTime(),getLocation()}">
+    <div >
     <div class="grid-container">
         <h1  class="heading " >Weather App</h1>
         <h5 id="time"></h4>
@@ -38,11 +69,12 @@
                 </div>
                 <input type="submit" class="btn btn-info">
             </form>
+        <p id="location"></p>
                
         </div>
         <div class="output">
             <% if(weather!==null){ %>
-            <p id='output'> It's <span><%=weather.main.temp %></span> &degC in <%=weather.name%></p>
+            <strong id='output'> It's <span><%=weather.main.temp %></span>&degC in <%=weather.name%></strong>
             <% } %>
             
             <% if(error !== null){ %>
