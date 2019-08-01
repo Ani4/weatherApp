@@ -1,4 +1,4 @@
-*{
+/* *{
     padding:0;
     margin:0;
     box-sizing: border-box;
@@ -65,4 +65,4 @@ body div{
 #location{
     grid-area: "blank5";
     color:linear-gradient(10deg, #37ee12 0%, #e74e07 51%, #2cb5e8 75%);
-}
+} */
