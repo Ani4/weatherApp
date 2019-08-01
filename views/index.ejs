@@ -75,7 +75,7 @@
         <p id="location"></p>
         <div class="output">
             <% if(weather!==null){ %>
-            <table class="table table-borderless table-dark"><thead><th colspan="2"><%=weather.name%></th></thead>
+            <table class="table table-borderless table-dark"><thead><th ><h3><%=weather.name%></h3> [Lon:<%=weather.coord.lon %>, Lat<%=weather.coord.lat %>]</th></thead>
                 <tr>
                     <td>Temprature</td>
                     <td> <span> <%=weather.main.temp %></span>&degC (min:<%=weather.main.temp_min %> ,max: <%=weather.main.temp_max %>)</td>
@@ -88,6 +88,7 @@
                     <td>Humidity</td>
                     <td><%=weather.main.humidity %>%</td>
                 </tr>
+            
                 <tr>
                     <td>Visibility</td>
                     <td><%=weather.visibility%></td>
