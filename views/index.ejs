@@ -33,21 +33,21 @@
         function showPosition(position) {
             var x = document.getElementById("location");
             console.log(position);
-            x.innerHTML = "Latitude: " + position.coords.latitude +
-            "<br/>Longitude: " + position.coords.longitude;
-             const data ={
-                 lat:position.coords.latitude, 
-                lon: position.coords.longitude
-             };
-             const options ={
+            x.innerHTML ="Your current location :<br/>"+ "<em>Latitude<em/>: " + position.coords.latitude +
+            "<br/><em>Longitude<em/>: " + position.coords.longitude;
+            //  const data ={
+            //      lat:position.coords.latitude, 
+            //     lon: position.coords.longitude
+            //  };
+            /*  const options ={
                 method :"POST",
                 body:JSON.stringify(data),
                 headers:{
                     'Content-Type':"application/json"
                 } 
-             }  ; 
-             fetch('/',options); 
-        }
+             };
+             fetch('/',options); */
+        } 
 
       
     </script>
@@ -69,14 +69,36 @@
                 </div>
                 <input type="submit" class="btn btn-info">
             </form>
-        <p id="location"></p>
+        
                
         </div>
+        <p id="location"></p>
         <div class="output">
             <% if(weather!==null){ %>
-            <strong id='output'> It's <span><%=weather.main.temp %></span>&degC in <%=weather.name%></strong>
-            <% } %>
-            
+            <table class="table table-borderless table-dark"><thead><th colspan="2"><%=weather.name%></th></thead>
+                <tr>
+                    <td>Temprature</td>
+                    <td> <span> <%=weather.main.temp %></span>&degC (min:<%=weather.main.temp_min %> ,max: <%=weather.main.temp_max %>)</td>
+                </tr>
+                <tr>
+                    <td>Pressure</td>
+                    <td><%=weather.main.pressure %> hPa</td>
+                </tr>
+                <tr>
+                    <td>Humidity</td>
+                    <td><%=weather.main.humidity %>%</td>
+                </tr>
+                <tr>
+                    <td>Visibility</td>
+                    <td><%=weather.visibility%></td>
+                </tr>
+                <tr>
+                    <td>Wind</td>
+                    <td><%=weather.wind.speed%>mps,<%=weather.wind.deg%>&deg</td>
+                </tr>
+                
+            </table>
+            <% } %>            
             <% if(error !== null){ %>
             <p><%= error %></p>
             <% } %>
